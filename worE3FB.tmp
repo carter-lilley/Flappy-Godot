@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0xcb82enbiv"]
+
+[ext_resource type="Texture2D" uid="uid://ckhbni0r8eqbu" path="res://icon.svg" id="1_7mfah"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_l7lja"]
+[ext_resource type="Script" path="res://Wall_Handler.gd" id="3_kt71p"]
+[ext_resource type="Script" path="res://Wall.gd" id="4_xe0nm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_l7lja")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_7mfah")
+
+[node name="Wall_Handler" type="Node2D" parent="."]
+script = ExtResource("3_kt71p")
+
+[node name="Wall" type="Node2D" parent="Wall_Handler"]
+script = ExtResource("4_xe0nm")

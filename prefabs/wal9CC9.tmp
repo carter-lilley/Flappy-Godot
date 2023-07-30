@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkpu2bmhm5hvu"]
+
+[ext_resource type="Script" path="res://scripts/Wall.gd" id="1_mp2g1"]
+[ext_resource type="Script" path="res://prefabs/Goal.gd" id="2_g28bn"]
+
+[node name="Wall" type="Node2D"]
+position = Vector2(720, 0)
+script = ExtResource("1_mp2g1")
+gap_size = 250.0
+
+[node name="Goal" type="Area2D" parent="." groups=["trigger"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_g28bn")
