@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://bluijs37481pw"]
+
+[ext_resource type="LabelSettings" uid="uid://cqqlwubppomv4" path="res://settings/list_settings.tres" id="1_4212w"]
+[ext_resource type="Script" path="res://scripts/leaderboard_master.gd" id="1_wihd8"]
+[ext_resource type="Theme" uid="uid://dufmlfg47a7nq" path="res://settings/textbox_theme.tres" id="2_seeik"]
+[ext_resource type="Script" path="res://scripts/Text_Input.gd" id="4_lnfls"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wihd8")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_Rows" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="List_Main" type="Panel" parent="CenterContainer/Panel_Rows"]
+custom_minimum_size = Vector2(0, 375)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List_Container" type="HBoxContainer" parent="CenterContainer/Panel_Rows/List_Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.008
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Score_Name_Panel" type="Panel" parent="CenterContainer/Panel_Rows/List_Main/List_Container"]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="Score_Name" type="Label" parent="CenterContainer/Panel_Rows/List_Main/List_Container/Score_Name_Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -156.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = ". PLAYER
+. PLAYER
+. PLAYER
+. PLAYER
+. PLAYER
+. PLAYER
+"
+label_settings = ExtResource("1_4212w")
+vertical_alignment = 3
+
+[node name="Score_Num_Panel" type="Panel" parent="CenterContainer/Panel_Rows/List_Main/List_Container"]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="Score_Num" type="Label" parent="CenterContainer/Panel_Rows/List_Main/List_Container/Score_Num_Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -156.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = ". SCORE
+.SCORE
+.SCORE
+.SCORE
+.SCORE
+.SCORE"
+label_settings = ExtResource("1_4212w")
+horizontal_alignment = 2
+vertical_alignment = 3
+
+[node name="Input_Main" type="Panel" parent="CenterContainer/Panel_Rows"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel_Rows/Input_Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text_Input" type="LineEdit" parent="CenterContainer/Panel_Rows/Input_Main/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("2_seeik")
+placeholder_text = "Input name..."
+expand_to_text_length = true
+script = ExtResource("4_lnfls")
+
+[node name="Button" type="Button" parent="CenterContainer/Panel_Rows/Input_Main/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_seeik")
+text = "☑"
+
+[connection signal="button_down" from="CenterContainer/Panel_Rows/Input_Main/HBoxContainer/Button" to="." method="_on_button_button_down"]

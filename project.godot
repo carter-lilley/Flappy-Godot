@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="flapp"
-run/main_scene="res://world_test.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,18 +19,25 @@ config/icon="res://icon.svg"
 
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 Globals="*res://scripts/global-autoload/globalutils.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+world_global="*res://scripts/global-autoload/world_global.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")
+enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg", "res://addons/silent_wolf/plugin.cfg", "res://addons/smoothing-addon-4.x/addons/smoothing/plugin.cfg", "res://addons/smoothing/plugin.cfg")
 
 [layer_names]
 
 2d_physics/layer_1="wall"
 2d_physics/layer_2="player"
 2d_physics/layer_3="goal"
+
+[physics]
+
+common/physics_jitter_fix=0.8

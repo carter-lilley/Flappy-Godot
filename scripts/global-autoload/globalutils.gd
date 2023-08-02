@@ -10,16 +10,23 @@ func stween_to(node: Node, property: String, target: Variant, duration: float, _
 	else:
 		tween.tween_property(node, property, target, duration).set_trans(_trans).set_ease(_ease)
 
-func stween_return(node: Node, property: String, target: Variant, duration: float, _trans: Tween.TransitionType, _ease: Tween.EaseType, relative: bool, parallel: bool):
-	var return_value: Variant = node.get(property)
+func stween_shake(node: Node, intensity: float, duration: float, _trans: Tween.TransitionType, _ease: Tween.EaseType):
+	var return_pos = node.position
+	var points: PackedVector2Array
+	for i in range(3):
+		# Generate random offsets for x and y coordinates within the intensity range
+		var x_offset = randf_range(-intensity, intensity)
+		var y_offset = randf_range(-intensity, intensity)
+		# Create a new Vector2 point with the starting position and the random offsets
+		var random_point = Vector2(return_pos.x + x_offset, return_pos.y + y_offset)
+		# Append the random point to the list
+		points.append(random_point)
 	var tween = node.create_tween()
-	tween.set_parallel(parallel)
-	if relative:
-		tween.tween_property(node, property, target, duration/2).set_trans(_trans).set_ease(_ease).as_relative()
-		tween.tween_property(node, property, return_value, duration/2).set_trans(_trans).set_ease(_ease).as_relative()
-	else:
-		tween.tween_property(node, property, target, duration/2).set_trans(_trans).set_ease(_ease)
-		tween.tween_property(node, property, return_value, duration/2).set_trans(_trans).set_ease(_ease)
+	var delta_duration = duration/4
+	tween.tween_property(node, "position", points[0], delta_duration).set_trans(_trans).set_ease(_ease)
+	tween.tween_property(node, "position", points[1], delta_duration).set_trans(_trans).set_ease(_ease)
+	tween.tween_property(node, "position", points[2], delta_duration).set_trans(_trans).set_ease(_ease)
+	tween.tween_property(node, "position", return_pos, delta_duration).set_trans(_trans).set_ease(_ease)
 
 
 #RAY UTILS-------------------------------------------------------

@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkpu2bmhm5hvu"]
+[gd_scene load_steps=4 format=3 uid="uid://dkpu2bmhm5hvu"]
 
+[ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="1_jjajo"]
 [ext_resource type="Script" path="res://scripts/Wall.gd" id="1_mp2g1"]
-[ext_resource type="Script" path="res://prefabs/Goal.gd" id="2_g28bn"]
+[ext_resource type="Script" path="res://scripts/Goal.gd" id="2_g28bn"]
 
 [node name="Wall" type="Node2D" groups=["wall"]]
-position = Vector2(720, 0)
 script = ExtResource("1_mp2g1")
 gap_size = 250.0
 
@@ -12,3 +12,7 @@ gap_size = 250.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_g28bn")
+
+[node name="Smoothing2D" type="Node2D" parent="."]
+script = ExtResource("1_jjajo")
+flags = 51
